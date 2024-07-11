@@ -12,3 +12,9 @@ This app will be used by individuals who struggle to stay consistent or need mot
 
 This project interests me because I often find it difficult to stay disciplined and consistent with my goals. I see this project as an opportunity to develop a solution for myself and others facing similar challenges. 
 
+## User Stories
+- As a user, I want to be able to add a custom habit to my tracker
+- As a user, I want to be able to be able to view the habits added to my tracker
+- As a user, I want to be able to check off my habits daily if I complete them
+- As a user, I want to be able to view the number of consecutive days I have completed my habit
+- As a user, I want to be able to delete habits from my tracker
