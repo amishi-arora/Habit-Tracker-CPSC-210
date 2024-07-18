@@ -1,7 +1,6 @@
 package model;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -59,14 +58,6 @@ public class HabitListTest {
         assertNull(hl.findHabit("not here")); 
     }
 
-    @Test 
-    void testCheckOffHabit() {
-        hl.addHabit(h1);
-        hl.addHabit(h2); 
-        hl.checkOffHabit("test"); 
-        assertTrue(h1.getHabitStatus()); 
-        assertFalse(h2.getHabitStatus()); 
-    }
 
     @Test 
     void testGetHabits() {

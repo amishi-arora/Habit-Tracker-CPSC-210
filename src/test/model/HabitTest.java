@@ -51,6 +51,14 @@ public class HabitTest {
     }
 
     @Test
+    void testGetHabitAndMark() {
+        h1.markHabitAsComplete();
+        assertEquals("test ✓", h1.getHabitAndMark()); 
+        h1.markHabitAsIncomplete();
+        assertEquals("test", h1.getHabitAndMark()); 
+    }
+
+    @Test
     void testGetHabitStatus() {
         h1.markHabitAsComplete();
         assertTrue(h1.getHabitStatus()); 

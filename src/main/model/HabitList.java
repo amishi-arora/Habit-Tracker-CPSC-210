@@ -27,24 +27,15 @@ public class HabitList {
 
 
     //EFFECTS: Finds habit matching entered name
-    //         If habit is not found, returns null. 
-    //         If there are multiple habits with the same name, returns first one
-
+    //If habit is not found, returns null. 
+    //If there are multiple habits with the same name, returns first one
     public Habit findHabit(String h) {
-        for(Habit hab: habits) {
-            if(h.equals(hab.getHabitName())) {
+        for (Habit hab: habits) {
+            if (h.equals(hab.getHabitName())) {
                 return hab; 
             }
         }
         return null; 
-    }
-
-    //EFFECTS: Finds habit matching name and 
-    // `       marks it as complete. If theres multiple habits with the 
-    //         same name, checks off the first one in the list
-    public void checkOffHabit(String h) {
-        Habit hab = findHabit(h); 
-        hab.markHabitAsComplete();
     }
 
     //EFFECTS: Returns list of habits
