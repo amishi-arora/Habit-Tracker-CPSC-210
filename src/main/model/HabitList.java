@@ -57,7 +57,7 @@ public class HabitList implements Writable {
         return json;  
     }
 
-    // EFFECTS: Returns habits in habit list as a JSON array
+    //EFFECTS: Returns habits in habit list as a JSON array
     private JSONArray habitsToJson() {
         JSONArray jsonArray = new JSONArray(); 
         for (Habit h: habits) {

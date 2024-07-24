@@ -69,8 +69,6 @@ public class JsonReader {
         Habit h = new Habit(habitName); 
         if (habitCompleted) {
             h.markHabitAsComplete();
-        } else {
-            h.markHabitAsIncomplete();
         }
         hl.addHabit(h); 
     }

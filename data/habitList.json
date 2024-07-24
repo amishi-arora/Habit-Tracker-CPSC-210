@@ -1,1 +1,14 @@
-{"habits": []}
+{"habits": [
+    {
+        "habitName": "Sleep",
+        "habitCompleted": false
+    },
+    {
+        "habitName": "Eat",
+        "habitCompleted": false
+    },
+    {
+        "habitName": "Drink water",
+        "habitCompleted": true
+    }
+]}
