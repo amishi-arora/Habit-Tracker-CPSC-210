@@ -1,45 +1,54 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Habit;
 import model.HabitList;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
-// A class representing an application that allows users to add and check off habits
+//A class representing an application that allows users to add and check off habits
 
-// Certain methods from this class are based on code found in Lab 3: FlashCard Reviewer
+//Certain methods from this class are based on code found in Lab 3: FlashCard Reviewer
 
 public class HabitTracker {
+    private static final String JSON_STORE = "./data/habitList.json";
     private Scanner scanner;
     private HabitList hl;
     private ArrayList<Habit> habits;
-    
-    // EFFECTS: creates HabitTracker console application
+    private JsonReader jsonReader;
+    private JsonWriter jsonWriter;
+
+    //EFFECTS: Creates HabitTracker console application
     public HabitTracker() {
         hl = new HabitList();
         scanner = new Scanner(System.in);
+        jsonReader = new JsonReader(JSON_STORE);
+        jsonWriter = new JsonWriter(JSON_STORE);
         printHabits(hl);
         getResponse();
 
     }
 
-    //MODIFIES: this 
+    //MODIFIES: This
     //EFFECTS: Prints out the habits currently in the habit list along with their
     //corresponding check mark value. Informs the user if there are no habits added
     public void printHabits(HabitList hl) {
         habits = hl.getHabits();
         if (habits.isEmpty()) {
-            divider(); 
+            divider();
             System.out.println("You currently don't have any habits to display");
             divider();
         } else {
-            divider(); 
+            divider();
             System.out.println("Your added habits are:");
             for (Habit hab : habits) {
-                System.out.println(hab.getHabitAndMark()); 
+                System.out.println(hab.getHabitAndMark());
             }
-            divider(); 
+            divider();
         }
 
     }
@@ -60,6 +69,7 @@ public class HabitTracker {
         System.out.println("Complete: mark a habit as complete");
         System.out.println("Incomplete: mark a habit as incomplete");
         System.out.println("Streak: view the number of days a habits been marked as complete");
+        System.out.println("Load: load habits from file");
         System.out.println("Quit: quit the application");
         divider();
     }
@@ -77,8 +87,9 @@ public class HabitTracker {
             incompleteHabit();
         } else if (input.equals("Streak")) {
             viewStreak();
+        } else if (input.equals("Load")) {
+            loadHabitList();
         } else if (input.equals("Quit")) {
-
             quitApp();
         } else {
             System.out.println("Not an available option.");
@@ -87,7 +98,7 @@ public class HabitTracker {
         }
     }
 
-    //MODIFIES: this
+    //MODIFIES: This
     //EFFECTS: Adds and displays a new habit to the habit tracker
     public void addNewHabit() {
         System.out.println("What would you like to name your habit?");
@@ -99,9 +110,9 @@ public class HabitTracker {
         getResponse();
     }
 
-    //MODIFIES: this
+    //MODIFIES: This
     //EFFECTS: Removes a habit from the habit tracker
-    //If habit does not exist, alerts the user. 
+    //If habit does not exist, alerts the user.
     public void deleteHabit() {
         System.out.println("What habit would you like to delete?");
         String name = scanner.nextLine();
@@ -119,14 +130,26 @@ public class HabitTracker {
 
     }
 
-    //EFFECTS: stops running the console application
+    //EFFECTS: Asks the user if they would like to save their habits
+    //and stops running the console application
     public void quitApp() {
+        save();
         System.out.println("Goodbye");
         System.exit(0);
     }
 
-    //MODIFIES: this, Habit
-    //EFFECTS: marks the habit as complete and adds a checkmark.  
+    //EFFECTS: Asks the user if they would like to save their habits. 
+    //If yes, saves added habits to file. If no, does nothing. 
+    public void save() {
+        System.out.println("Would you like to save your habits to file? Enter Yes or No.");
+        String answer = scanner.nextLine();
+        if (answer.equals("Yes")) {
+            saveHabitList();
+        }
+    }
+
+    //MODIFIES: This, hab
+    //EFFECTS: Marks the habit as complete and adds a checkmark.
     //If habit does not exist or has already been completed, alerts the user
     public void completeHabit() {
         System.out.println("What habit would you like to mark as complete?");
@@ -144,8 +167,8 @@ public class HabitTracker {
         getResponse();
     }
 
-    //MODIFIES: this, Habit
-    //EFFECTS: marks habit as incomplete and removes the checkmark.
+    //MODIFIES: This, hab
+    //EFFECTS: Marks habit as incomplete and removes the checkmark.
     //If habit does not exist or is already marked as incomplete, alerts the user
     public void incompleteHabit() {
         System.out.println("What habit would you like to mark as incomplete?");
@@ -181,10 +204,36 @@ public class HabitTracker {
         getResponse();
     }
 
-    //EFFECTS: Divider for separating what is displayed on the console. 
+    //EFFECTS: Saves the habit list to file
+    private void saveHabitList() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(hl);
+            jsonWriter.close();
+            System.out.println("Your habits have been saved!");
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to save habits");
+        }
+    }
+
+    //MODIFIES: This
+    //EFFECTS: Loads the habit list from file
+    private void loadHabitList() {
+        try {
+            hl = jsonReader.readHabits();
+            System.out.println("Your habits have been loaded!");
+            printHabits(hl);
+            getResponse();
+        } catch (IOException e) {
+            System.out.println("Unable to load habits");
+            printHabits(hl);
+            getResponse();
+        }
+    }
+
+    //EFFECTS: Divider for separating what is displayed on the console.
     private void divider() {
         System.out.println("------------------------------------");
     }
-
 
 }

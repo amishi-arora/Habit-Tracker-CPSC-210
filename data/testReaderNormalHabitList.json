@@ -1,0 +1,16 @@
+{
+    "habits": [
+        {
+            "habitName": "sleep 8 hours",
+            "habitCompleted": true
+        },
+        {
+            "habitName": "drink water",
+            "habitCompleted": false
+        },
+        {
+            "habitName": "eat healthy",
+            "habitCompleted": false
+        }
+    ]
+}

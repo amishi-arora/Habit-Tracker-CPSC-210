@@ -2,9 +2,14 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // A class representing the habits that have been added to the tracker
 
-public class HabitList {
+public class HabitList implements Writable {
 
     private ArrayList<Habit> habits; 
     
@@ -13,14 +18,14 @@ public class HabitList {
         habits = new ArrayList<Habit>(); 
     }
 
-    //MODIFIES: this
-    //EFFECTS: adds given habit to the habit list
+    //MODIFIES: This
+    //EFFECTS: Adds given habit to the habit list
     public void addHabit(Habit h) {  
         habits.add(h); 
     }
 
-    //MODIFIES: this
-    //EFFECTS: deletes given habit from habit list
+    //MODIFIES: This
+    //EFFECTS: Deletes given habit from habit list
     public void removeHabit(Habit h) {  
         habits.remove(h); 
     }
@@ -42,4 +47,24 @@ public class HabitList {
     public ArrayList<Habit> getHabits() {
         return habits; 
     }
+
+
+    //EFFECTS: Returns habits in habit list as a JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject(); 
+        json.put("habits", habitsToJson()); 
+        return json;  
+    }
+
+    // EFFECTS: Returns habits in habit list as a JSON array
+    private JSONArray habitsToJson() {
+        JSONArray jsonArray = new JSONArray(); 
+        for (Habit h: habits) {
+            jsonArray.put(h.toJson()); 
+        }
+        return jsonArray;
+    }
+
+
 }

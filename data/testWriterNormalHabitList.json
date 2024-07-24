@@ -1,0 +1,10 @@
+{"habits": [
+    {
+        "habitName": "sleep",
+        "habitCompleted": false
+    },
+    {
+        "habitName": "do homework",
+        "habitCompleted": true
+    }
+]}

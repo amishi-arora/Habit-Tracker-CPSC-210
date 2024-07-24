@@ -1,8 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // A class representing a habit added to the habit tracker
 
-public class Habit {
+public class Habit implements Writable {
     String habitName;
     int daysCompleted; 
     boolean habitCompleted; 
@@ -17,8 +21,8 @@ public class Habit {
         checkmark = ""; 
     }
 
-    //MODIFIES: this
-    //EFFECTS: marks habit as complete and adds one to the number of days habit has been 
+    //MODIFIES: This
+    //EFFECTS: Marks habit as complete and adds one to the number of days habit has been 
     //completed. Sets checkmark value to a check. 
     public void markHabitAsComplete() {
         habitCompleted = true; 
@@ -26,8 +30,8 @@ public class Habit {
         checkmark = " ✓"; 
     }
 
-    //MODIFIES: this
-    //EFFECTS: marks habit as incomplete and adds one to the number of days habit has been 
+    //MODIFIES: This
+    //EFFECTS: Marks habit as incomplete and adds one to the number of days habit has been 
     //completed. Sets checkmark to blank. 
     public void markHabitAsIncomplete() {
         habitCompleted = false; 
@@ -35,7 +39,7 @@ public class Habit {
         checkmark = "";      
     }
 
-    //EFFECTS: returns the number of days the habit has been completed 
+    //EFFECTS: Returns the number of days the habit has been completed 
     public int getDaysCompleted() {
         return daysCompleted; 
     }
@@ -54,6 +58,18 @@ public class Habit {
     //hasn't been marked as complete 
     public boolean getHabitStatus() {
         return this.habitCompleted; 
+    }
+
+
+
+    //EFFECTS: Returns habit name and whether the habit has been completed or not as a JSON
+    //object 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject(); 
+        json.put("habitName", habitName); 
+        json.put("habitCompleted", habitCompleted); 
+        return json; 
     }
 
 
