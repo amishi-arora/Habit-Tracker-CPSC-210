@@ -1,14 +1,16 @@
 package ui;
 
 import java.io.FileNotFoundException;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import model.Habit;
 import model.HabitList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
+
+import javax.swing.*;
 
 //A class representing an application that allows users to add and check off habits
 
@@ -21,16 +23,22 @@ public class HabitTracker {
     private ArrayList<Habit> habits;
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
+    private JFrame frame; 
+    private JPanel habitsPanel; 
+    private JButton addButton; 
+    private JButton removeButton; 
+    private JButton loadButton; 
+    private JButton quitButton; 
 
     //EFFECTS: Creates HabitTracker console application
     public HabitTracker() {
+        createGUI();
         hl = new HabitList();
         scanner = new Scanner(System.in);
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
         printHabits(hl);
         getResponse();
-
     }
 
     //MODIFIES: This
@@ -234,6 +242,31 @@ public class HabitTracker {
     //EFFECTS: Divider for separating what is displayed on the console.
     private void divider() {
         System.out.println("------------------------------------");
+    }
+
+    //MODIFIES: this
+    //EFFECTS: Creates the intial graphical user interface
+    private void createGUI() {
+        frame = new JFrame("Habit Tracker"); 
+        habitsPanel = new JPanel(); 
+        addButton = new JButton("Add"); 
+        removeButton = new JButton("Delete"); 
+        loadButton = new JButton("Load"); 
+        quitButton = new JButton("Quit"); 
+
+        habitsPanel.setBorder(BorderFactory.createEmptyBorder(200, 100, 5, 100)); 
+
+        frame.add(habitsPanel); 
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        addButton.setOpaque(true);  
+        habitsPanel.add(addButton); 
+        habitsPanel.add(removeButton); 
+        habitsPanel.add(loadButton); 
+        habitsPanel.add(quitButton); 
+        frame.pack(); 
+
+        frame.setVisible(true); 
+
     }
 
 }
