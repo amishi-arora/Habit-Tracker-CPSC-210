@@ -65,9 +65,6 @@ public class HabitTrackerGUI implements ActionListener {
         addButton = new JButton("Add");
         addButton.setActionCommand("Add");
         addButton.addActionListener(this);
-        removeButton = new JButton("Delete");
-        removeButton.setActionCommand("Delete");
-        removeButton.addActionListener(this);
         loadButton = new JButton("Load");
         loadButton.setActionCommand("Load");
         loadButton.addActionListener(this);
@@ -75,29 +72,65 @@ public class HabitTrackerGUI implements ActionListener {
         quitButton.setActionCommand("Quit");
         quitButton.addActionListener(this);
         buttonsPanel.add(addButton);
-        buttonsPanel.add(removeButton);
         buttonsPanel.add(loadButton);
         buttonsPanel.add(quitButton);
         panel.add(buttonsPanel, BorderLayout.SOUTH);
     }
 
+
+    private void newHabit() {
+        JPanel habitPanel = new JPanel(); 
+        JTextField habit = new JTextField(); 
+        Dimension habitPanelDim = new Dimension((int)frameSize.getWidth() - 120, 50); 
+        Dimension habitDim = new Dimension((int)frameSize.getWidth() - 150, 50);
+        habit.setMaximumSize(habitDim);
+        habit.setPreferredSize(habitDim);
+        habit.setMinimumSize(habitDim);
+        habitPanel.setMaximumSize(habitPanelDim);
+        habitPanel.setPreferredSize(habitPanelDim);
+        habitPanel.setMinimumSize(habitPanelDim);
+        habitPanel.setBackground(Color.BLUE); 
+        habit.setBackground(Color.GREEN); 
+        habitPanel.add(habit); 
+        habit.setAlignmentX(Component.LEFT_ALIGNMENT);
+
+        removeButton(habitPanel); 
+
+        content.add(habitPanel); 
+
+
+        habit.requestFocus(); 
+        frame.repaint();
+        frame.revalidate();
+    }
+
+    private void removeButton(JPanel habitPanel) {
+        removeButton = new JButton("X");
+        removeButton.setPreferredSize(new Dimension(20, 20)); 
+        removeButton.setActionCommand("Delete");
+        removeButton.addActionListener(this);
+        habitPanel.add(removeButton);
+    }
+
+    private void deleteHabit(ActionEvent e) {
+        Object source = e.getSource();
+        if (source instanceof Component) {
+            Component comp = (Component)source; 
+            content.remove(comp.getParent());
+            frame.repaint();
+            frame.revalidate();
+        }
+    }
+
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Add")) {
-            JTextField habit = new JTextField(); 
-            Dimension habitDim = new Dimension((int)frameSize.getWidth() - 120, 50); 
-            habit.setMaximumSize(habitDim);
-            habit.setPreferredSize(habitDim);
-            habit.setMinimumSize(habitDim);
-            habit.setBackground(Color.GREEN); 
-            content.add(habit); 
-
-            habit.requestFocus(); 
-            frame.repaint();
-            frame.revalidate(); 
-
-        }
-        
+            newHabit(); 
+        } 
+        if (e.getActionCommand().equals("Delete")) {
+            deleteHabit(e);
+        }  
     }
+
 
 
 }
