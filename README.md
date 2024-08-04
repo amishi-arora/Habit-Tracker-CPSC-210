@@ -17,7 +17,7 @@ This project interests me because I often find it difficult to stay disciplined 
 - As a user, I want to be able to be able to view the habits added to my tracker
 - As a user, I want to be able to check off my habits daily if I complete them
 - As a user, I want to be able to uncheck completed habits
-- As a user, I want to be able to view the number of consecutive days I have completed my habit
+- As a user, I want to be able to view the number of days I have completed my habit
 - As a user, I want to be able to delete habits from my tracker
 - As a user, when I quit the application, I want to be reminded to save my habit tracker to file and have the option to do so or not
 - As a user, when I run the application, I want to be given the option to load my habit tracker from file

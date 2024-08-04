@@ -1,15 +1,11 @@
 package ui;
 
-import java.util.ArrayList;
-import static javax.swing.ScrollPaneConstants.*; 
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import model.Habit;
-import model.HabitList;
 
 public class HabitTrackerGUI implements ActionListener {
 
@@ -20,6 +16,7 @@ public class HabitTrackerGUI implements ActionListener {
     private JButton loadButton;
     private JButton quitButton;
     private JPanel content;
+
     private static final Dimension frameSize = new Dimension(700, 700); 
 
     public HabitTrackerGUI() {
@@ -82,7 +79,7 @@ public class HabitTrackerGUI implements ActionListener {
         JPanel habitPanel = new JPanel(); 
         JTextField habit = new JTextField(); 
         Dimension habitPanelDim = new Dimension((int)frameSize.getWidth() - 120, 50); 
-        Dimension habitDim = new Dimension((int)frameSize.getWidth() - 150, 50);
+        Dimension habitDim = new Dimension((int)frameSize.getWidth() - 225, 50);
         habit.setMaximumSize(habitDim);
         habit.setPreferredSize(habitDim);
         habit.setMinimumSize(habitDim);
@@ -91,10 +88,11 @@ public class HabitTrackerGUI implements ActionListener {
         habitPanel.setMinimumSize(habitPanelDim);
         habitPanel.setBackground(Color.BLUE); 
         habit.setBackground(Color.GREEN); 
+        removeButton(habitPanel);
         habitPanel.add(habit); 
-        habit.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        removeButton(habitPanel); 
+        
+        new Counter(habitPanel); 
 
         content.add(habitPanel); 
 
@@ -112,6 +110,7 @@ public class HabitTrackerGUI implements ActionListener {
         habitPanel.add(removeButton);
     }
 
+
     private void deleteHabit(ActionEvent e) {
         Object source = e.getSource();
         if (source instanceof Component) {
@@ -122,6 +121,7 @@ public class HabitTrackerGUI implements ActionListener {
         }
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Add")) {
             newHabit(); 
