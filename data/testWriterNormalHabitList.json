@@ -1,9 +1,11 @@
 {"habits": [
     {
+        "daysCompleted": 0,
         "habitName": "sleep",
         "habitCompleted": false
     },
     {
+        "daysCompleted": 1,
         "habitName": "do homework",
         "habitCompleted": true
     }

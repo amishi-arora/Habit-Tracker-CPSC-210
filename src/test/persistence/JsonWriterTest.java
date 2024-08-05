@@ -51,8 +51,8 @@ public class JsonWriterTest extends JsonTest {
             hl = r.readHabits(); 
             List<Habit> habits = hl.getHabits(); 
             assertEquals(2, habits.size()); 
-            checkHabit("sleep", false, habits.get(0)); 
-            checkHabit("do homework", true, habits.get(1)); 
+            checkHabit("sleep", false, 0, habits.get(0)); 
+            checkHabit("do homework", true, 1, habits.get(1)); 
 
         } catch (IOException e) {
             fail("Could not read from file"); 

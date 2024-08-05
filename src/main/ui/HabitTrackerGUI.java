@@ -33,7 +33,7 @@ public class HabitTrackerGUI implements ActionListener {
     private JsonReader jsonReader;
     private JsonWriter jsonWriter;
     private HabitList hl;
-    private ImageIcon exMark; 
+    private ImageIcon save; 
     private ArrayList<HabitPanel> habitPanels; 
 
 
@@ -46,7 +46,7 @@ public class HabitTrackerGUI implements ActionListener {
     public HabitTrackerGUI() {
         hl = new HabitList();
         habitPanels = new ArrayList<>(); 
-        exMark = new ImageIcon("data/exMark.png"); 
+        save = new ImageIcon("data/saveicon.png"); 
         jsonReader = new JsonReader(JSON_STORE);
         jsonWriter = new JsonWriter(JSON_STORE);
         createGUI();
@@ -103,7 +103,7 @@ public class HabitTrackerGUI implements ActionListener {
     // MODIFIES: this
     // EFFECTS: Creates a new habit for the tracker
     private void newHabit() {
-        habitPanel = new HabitPanel(this, null);
+        habitPanel = new HabitPanel(this, null, 0);
         habitPanels.add(habitPanel); 
     }
 
@@ -118,24 +118,25 @@ public class HabitTrackerGUI implements ActionListener {
         habitPanel.add(removeButton);
     }
 
-    // MODIFIES: this
-    // EFFECTS: Deletes habit when remove button is pressed
-    private void deleteHabit(ActionEvent e) {
-        Object source = e.getSource();
-        if (source instanceof Component) {
-            Component comp = (Component) source;
-            content.remove(comp.getParent());
-            frame.repaint();
-            frame.revalidate();
-        }
-    }
 
+    // MODIFIES: this
+    // EFFECTS: Adds the habits that are currently on the tracker to the habit list
     private void addHabitsToHabitList() {
+        hl = new HabitList(); 
         for (HabitPanel hp : habitPanels) {
             Habit h = new Habit(hp.getName()); 
+            h.setDaysCompleted(hp.getDaysCompleted());
             hl.addHabit(h); 
         }
     }
+
+    // MODIFIES: this
+    // EFFECTS: Removes habit from the habit list
+    public void removeHabitFromHabitPanels(HabitPanel hp) {
+        habitPanels.remove(hp); 
+        hl.removeHabit(hl.findHabit(hp.getName()));
+    }
+
 
     // EFFECTS: Saves the added habits to file 
     private void saveHabits() {
@@ -152,7 +153,7 @@ public class HabitTrackerGUI implements ActionListener {
     // and quits application
     private void quitApp() {
         int answer = JOptionPane.showConfirmDialog(frame, "Do you want to save your habits?", "Save",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, save);
         if (answer == JOptionPane.NO_OPTION) {
             System.exit(0);
 
@@ -170,7 +171,8 @@ public class HabitTrackerGUI implements ActionListener {
         try {
             hl = jsonReader.readHabits();
             for (Habit h: hl.getHabits()) {
-                new HabitPanel(this, h.getHabitName()); 
+                HabitPanel hp = new HabitPanel(this, h.getHabitName(), h.getDaysCompleted()); 
+                habitPanels.add(hp); 
             }
         } catch (IOException e) {
             //
@@ -184,12 +186,6 @@ public class HabitTrackerGUI implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand().equals("Add")) {
             newHabit();
-        }
-        if (e.getActionCommand().equals("Delete")) {
-            deleteHabit(e);
-            displayRemoveImage();
-            frame.repaint(); 
-            frame.revalidate(); 
         }
         if (e.getActionCommand().equals("Quit")) {
             quitApp();
@@ -207,13 +203,5 @@ public class HabitTrackerGUI implements ActionListener {
         return content;
     }
 
-
-    // EFFECTS: Creates pop up panel for when habit is removed 
-    public void displayRemoveImage() {
-        new JOptionPane(); 
-
-        JOptionPane.showMessageDialog(content, "Habit Deleted", 
-                    "Habit Deleted", JOptionPane.INFORMATION_MESSAGE, exMark); 
-    }
 
 }

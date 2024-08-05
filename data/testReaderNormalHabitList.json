@@ -1,14 +1,17 @@
 {
     "habits": [
         {
+            "daysCompleted": 1,
             "habitName": "sleep 8 hours",
             "habitCompleted": true
         },
         {
+            "daysCompleted": 0,
             "habitName": "drink water",
             "habitCompleted": false
         },
         {
+            "daysCompleted": 0,
             "habitName": "eat healthy",
             "habitCompleted": false
         }

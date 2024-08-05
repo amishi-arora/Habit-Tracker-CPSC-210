@@ -19,8 +19,8 @@ public class Counter implements ActionListener {
 
     //MODIFES: this
     //EFFECTS: Creates a new counter instance
-    public Counter(JPanel panel) {
-        daysCompleted = 0;
+    public Counter(JPanel panel, int daysCompleted) {
+        this.daysCompleted = daysCompleted;
         this.panel = panel; 
         counterButton(daysCompleted); 
         checkMark = new ImageIcon("data/checkmark.png"); 
@@ -51,9 +51,9 @@ public class Counter implements ActionListener {
             daysCompleted++; 
             panel.remove(counter);
             counterButton(daysCompleted);
-            displayImage(); 
             panel.repaint();
             panel.revalidate();
+            displayImage(); 
         } 
     }
     
@@ -64,6 +64,15 @@ public class Counter implements ActionListener {
         JOptionPane.showMessageDialog(panel, "Habit Completed", 
                     "Habit Completed", JOptionPane.INFORMATION_MESSAGE, checkMark); 
 
+    }
+
+    public int getDaysCompleted() {
+        return daysCompleted; 
+    }
+
+    public void setDaysCompleted(int n) {
+        daysCompleted = n; 
+        counterButton(daysCompleted);
     }
 
 

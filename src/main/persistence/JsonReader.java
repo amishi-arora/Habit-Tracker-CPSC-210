@@ -66,10 +66,12 @@ public class JsonReader {
     private void addHabit(HabitList hl, JSONObject jo) {
         String habitName = jo.getString("habitName"); 
         Boolean habitCompleted = jo.getBoolean("habitCompleted"); 
+        int daysCompleted = jo.getInt("daysCompleted"); 
         Habit h = new Habit(habitName); 
         if (habitCompleted) {
             h.markHabitAsComplete();
         }
+        h.setDaysCompleted(daysCompleted);
         hl.addHabit(h); 
     }
 

@@ -35,13 +35,22 @@ public class Habit implements Writable {
     //completed. Sets checkmark to blank. 
     public void markHabitAsIncomplete() {
         habitCompleted = false; 
-        daysCompleted--;   
+        if (daysCompleted == 0) {
+            daysCompleted = 0; 
+        } else {
+            daysCompleted--;  
+        }
         checkmark = "";      
     }
 
     //EFFECTS: Returns the number of days the habit has been completed 
     public int getDaysCompleted() {
         return daysCompleted; 
+    }
+
+    //EFFECTS: Sets the nuber of days completed to the given int
+    public void setDaysCompleted(int days) {
+        daysCompleted = days; 
     }
 
     //EFFECTS: Returns habits name 
@@ -61,7 +70,6 @@ public class Habit implements Writable {
     }
 
 
-
     //EFFECTS: Returns habit name and whether the habit has been completed or not as a JSON
     //object 
     @Override
@@ -69,6 +77,7 @@ public class Habit implements Writable {
         JSONObject json = new JSONObject(); 
         json.put("habitName", habitName); 
         json.put("habitCompleted", habitCompleted); 
+        json.put("daysCompleted", daysCompleted); 
         return json; 
     }
 
