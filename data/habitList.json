@@ -1,10 +1,30 @@
 {"habits": [
     {
-        "habitName": "Eat healthy",
-        "habitCompleted": true
+        "habitName": "",
+        "habitCompleted": false
     },
     {
-        "habitName": "Drink water",
+        "habitName": "",
+        "habitCompleted": false
+    },
+    {
+        "habitName": "",
+        "habitCompleted": false
+    },
+    {
+        "habitName": "Hi",
+        "habitCompleted": false
+    },
+    {
+        "habitName": "",
+        "habitCompleted": false
+    },
+    {
+        "habitName": "",
+        "habitCompleted": false
+    },
+    {
+        "habitName": "",
         "habitCompleted": false
     }
 ]}

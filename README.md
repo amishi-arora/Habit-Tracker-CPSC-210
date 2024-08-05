@@ -21,3 +21,13 @@ This project interests me because I often find it difficult to stay disciplined 
 - As a user, I want to be able to delete habits from my tracker
 - As a user, when I quit the application, I want to be reminded to save my habit tracker to file and have the option to do so or not
 - As a user, when I run the application, I want to be given the option to load my habit tracker from file
+
+
+# Instructions for Grader
+
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking the add button at the bottom
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking the X mark beside each habit
+- You can generate a third action related to the user story "adding multiple Xs to a Y" by clicking the number beside the habit
+- You can locate my visual component by clicking the X mark beside a habit or clicking the number beside a habit
+- You can save the state of my application by clicking the quit button at the bottom then selecting yes when asked if you would like to save your habits
+- You can reload the state of my application by clicking the load button at the bottom 
