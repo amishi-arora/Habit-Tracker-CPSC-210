@@ -35,7 +35,7 @@ public class HabitPanel implements ActionListener {
     private HabitTrackerGUI htg; 
     private Counter counter; 
 
-    // MODIFIES: this
+    // MODIFIES: this, HabitTrackerGUI
     // REQUIRES: HabitTrackerGUI is not null
     // EFFECTS: Constructs a new habit panel instance
     public HabitPanel(HabitTrackerGUI htg, String name, int dc) {
@@ -70,6 +70,7 @@ public class HabitPanel implements ActionListener {
         return habit.getText();
     }
 
+    // MODIFIES: this
     // EFFECTS: Creates the remove habit button
     public JButton removeButton() {
         removeButton = new JButton("X");
@@ -79,6 +80,7 @@ public class HabitPanel implements ActionListener {
         return removeButton;
     }
 
+    // MODIFIES: this
     // EFFECTS: Handles reponse when delete button is pressed
     @Override
     public void actionPerformed(ActionEvent e) {

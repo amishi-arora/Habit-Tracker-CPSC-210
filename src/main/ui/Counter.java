@@ -25,6 +25,7 @@ public class Counter implements ActionListener {
     private ImageIcon checkMark; 
 
     //MODIFES: this
+    //REQUIRES: panel and days completed are not null, days completed is not negative
     //EFFECTS: Creates a new counter instance
     public Counter(JPanel panel, int daysCompleted) {
         this.daysCompleted = daysCompleted;
@@ -77,6 +78,7 @@ public class Counter implements ActionListener {
         return daysCompleted; 
     }
 
+    // REQUIRES: n is not negative
     // EFFECTS: Sets days completed to the given int
     public void setDaysCompleted(int n) {
         daysCompleted = n; 
