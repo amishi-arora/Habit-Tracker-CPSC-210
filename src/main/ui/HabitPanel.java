@@ -12,9 +12,16 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-// A class representing the habits that are added to the habit tracker
+// A class representing a habit added to the habit tracker GUI
 
-// Some methods have been built with the help of the following sources: 
+// Some methods in this class have been built with the help of the following sources: 
+// https://youtu.be/FwpREs5ogQE?si=mVTJwKpNNOf2XXXy
+// https://youtu.be/ffVY6HGtxH8?si=49KZkEHjFMywSrN1
+// https://youtu.be/hBe2eBorQuw?si=ErMWFQmlwljZq_Jg
+// https://youtu.be/PD6pd6AMoOI?si=mN8q4hNR9gRy1Dup
+// https://youtu.be/5o3fMLPY7qY?si=27bHlGh28PZwxL0y
+// https://stackoverflow.com/questions/13963392/add-image-to-joptionpane
+// https://stackoverflow.com/questions/16390503/java-swing-getting-input-from-a-jtextfield
 
 public class HabitPanel implements ActionListener {
     private static final Dimension habitPanelDim = new Dimension((int) HabitTrackerGUI.frameSize.getWidth() - 120, 50);
@@ -93,6 +100,7 @@ public class HabitPanel implements ActionListener {
                 "Habit Deleted", JOptionPane.INFORMATION_MESSAGE, exMark);
     }
 
+    // EFFECTS: Returns the days completed of the habit panels corresponding counter
     public int getDaysCompleted() {
         return counter.getDaysCompleted(); 
     }

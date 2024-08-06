@@ -31,7 +31,7 @@ public class Habit implements Writable {
     }
 
     //MODIFIES: This
-    //EFFECTS: Marks habit as incomplete and adds one to the number of days habit has been 
+    //EFFECTS: Marks habit as incomplete and subtracts one to the number of days habit has been 
     //completed. Sets checkmark to blank. 
     public void markHabitAsIncomplete() {
         habitCompleted = false; 

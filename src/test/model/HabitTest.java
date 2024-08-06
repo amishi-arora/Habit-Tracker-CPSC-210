@@ -45,6 +45,12 @@ public class HabitTest {
     }
 
     @Test
+    void setDaysCompleted() {
+        h1.setDaysCompleted(3);
+        assertEquals(3, h1.getDaysCompleted()); 
+    }
+
+    @Test
     void testGetHabitName() {
         assertEquals("test", h1.getHabitName()); 
         assertEquals("test2", h2.getHabitName()); 
