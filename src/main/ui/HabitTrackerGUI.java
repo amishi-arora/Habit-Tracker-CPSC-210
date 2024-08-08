@@ -31,7 +31,6 @@ public class HabitTrackerGUI implements ActionListener {
 
     private JFrame frame;
 
-    private HabitPanel habitPanel;
     private JPanel panel;
     private JButton addButton;
     private JButton removeButton;
@@ -111,7 +110,7 @@ public class HabitTrackerGUI implements ActionListener {
     // MODIFIES: this
     // EFFECTS: Creates a new habit for the tracker
     private void newHabit() {
-        habitPanel = new HabitPanel(this, null, 0);
+        HabitPanel habitPanel = new HabitPanel(this, null, 0);
         habitPanels.add(habitPanel); 
         hl.addHabit(new Habit(null));
     }

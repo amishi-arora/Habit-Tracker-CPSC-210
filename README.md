@@ -39,3 +39,8 @@ This project interests me because I often find it difficult to stay disciplined 
 - Wed Aug 07 21:09:35 PDT 2024<br /> Habit added to habit list.
 - Wed Aug 07 21:09:43 PDT 2024<br /> Habit added to habit list.
 - Wed Aug 07 21:09:44 PDT 2024<br /> Habit removed from habit list.
+
+
+# Phase 4: Task 3
+
+To improve my design, I think I could've made some of my classes more cohesive by breaking them up into multiple classes. For example, I think my HabitTracker and HabitTrackerGUI classes have various responsiblities which could've been dealt with better if they were managed by their own class. To go about refactoring this, I would identify code in my classes that handle distinct functionalities and move them into their own seperate class. This change in design would improve the readability of my code and make it easier to maintain. 

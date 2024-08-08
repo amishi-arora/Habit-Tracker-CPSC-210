@@ -1,5 +1,27 @@
-{"habits": [{
-    "daysCompleted": 0,
-    "habitName": ";laksjdf;lakjsdf",
-    "habitCompleted": false
-}]}
+{"habits": [
+    {
+        "daysCompleted": 0,
+        "habitName": "",
+        "habitCompleted": false
+    },
+    {
+        "daysCompleted": 0,
+        "habitName": "",
+        "habitCompleted": false
+    },
+    {
+        "daysCompleted": 0,
+        "habitName": "",
+        "habitCompleted": false
+    },
+    {
+        "daysCompleted": 0,
+        "habitName": "",
+        "habitCompleted": false
+    },
+    {
+        "daysCompleted": 0,
+        "habitName": "",
+        "habitCompleted": false
+    }
+]}
