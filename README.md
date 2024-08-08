@@ -35,11 +35,7 @@ This project interests me because I often find it difficult to stay disciplined 
 
 # Phase 4: Task 2
 
-Wed Aug 07 21:09:32 PDT 2024
-Habit added to habit list.
-Wed Aug 07 21:09:35 PDT 2024
-Habit added to habit list.
-Wed Aug 07 21:09:43 PDT 2024
-Habit added to habit list.
-Wed Aug 07 21:09:44 PDT 2024
-Habit removed from habit list.
+- Wed Aug 07 21:09:32 PDT 2024<br /> Habit added to habit list.
+- Wed Aug 07 21:09:35 PDT 2024<br /> Habit added to habit list.
+- Wed Aug 07 21:09:43 PDT 2024<br /> Habit added to habit list.
+- Wed Aug 07 21:09:44 PDT 2024<br /> Habit removed from habit list.
