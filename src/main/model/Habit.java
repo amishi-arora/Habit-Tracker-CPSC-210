@@ -81,6 +81,12 @@ public class Habit implements Writable {
         return json; 
     }
 
+    // MODIFIES: this
+    // EFFECTS: sets the habits name to the given string 
+    public void setName(String name) {
+        habitName = name; 
+    }
+
 
 
 }

@@ -31,3 +31,15 @@ This project interests me because I often find it difficult to stay disciplined 
 - You can locate my visual components by clicking the X mark beside a habit, clicking the number beside a habit, or clicking the quit button at the bottom
 - You can save the state of my application by clicking the quit button at the bottom then selecting yes when asked if you would like to save your habits
 - You can reload the state of my application by clicking the load button at the bottom 
+
+
+# Phase 4: Task 2
+
+Wed Aug 07 21:09:32 PDT 2024
+Habit added to habit list.
+Wed Aug 07 21:09:35 PDT 2024
+Habit added to habit list.
+Wed Aug 07 21:09:43 PDT 2024
+Habit added to habit list.
+Wed Aug 07 21:09:44 PDT 2024
+Habit removed from habit list.

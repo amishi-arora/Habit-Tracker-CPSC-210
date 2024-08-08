@@ -19,15 +19,18 @@ public class HabitList implements Writable {
     }
 
     //MODIFIES: This
-    //EFFECTS: Adds given habit to the habit list
+    //EFFECTS: Adds given habit to the habit list and logs the event
     public void addHabit(Habit h) {  
         habits.add(h); 
+        EventLog.getInstance().logEvent(new Event("Habit added to habit list."));
     }
 
-    //MODIFIES: This
-    //EFFECTS: Deletes given habit from habit list
+
+    //MODIFIES: This, EventLog
+    //EFFECTS: Deletes given habit from habit list and logs the event
     public void removeHabit(Habit h) {  
         habits.remove(h); 
+        EventLog.getInstance().logEvent(new Event("Habit removed from habit list.")); 
     }
 
 

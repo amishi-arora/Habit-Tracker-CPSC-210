@@ -4,6 +4,8 @@ import javax.swing.*;
 
 import model.Habit;
 import model.HabitList;
+import model.EventLog;
+import model.Event;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -24,9 +26,6 @@ import java.util.ArrayList;
 // https://youtu.be/5o3fMLPY7qY?si=27bHlGh28PZwxL0y
 // https://stackoverflow.com/questions/13963392/add-image-to-joptionpane
 // https://stackoverflow.com/questions/16390503/java-swing-getting-input-from-a-jtextfield
-
-
-
 
 public class HabitTrackerGUI implements ActionListener {
 
@@ -114,6 +113,7 @@ public class HabitTrackerGUI implements ActionListener {
     private void newHabit() {
         habitPanel = new HabitPanel(this, null, 0);
         habitPanels.add(habitPanel); 
+        hl.addHabit(new Habit(null));
     }
 
     // REQUIRES: habitPanel can not be null
@@ -131,17 +131,15 @@ public class HabitTrackerGUI implements ActionListener {
     // MODIFIES: this
     // EFFECTS: Adds the habits that are currently on the tracker to the habit list
     private void addHabitsToHabitList() {
-        hl = new HabitList(); 
-        for (HabitPanel hp : habitPanels) {
-            Habit h = new Habit(hp.getName()); 
-            h.setDaysCompleted(hp.getDaysCompleted());
-            hl.addHabit(h); 
+        for (int i = 0; i < hl.getHabits().size(); i++) {
+            hl.getHabits().get(i).setName(habitPanels.get(i).getName());
         }
     }
 
     // MODIFIES: this
     // EFFECTS: Removes habit from the habit list
     public void removeHabitFromHabitPanels(HabitPanel hp) {
+        addHabitsToHabitList();
         habitPanels.remove(hp); 
         hl.removeHabit(hl.findHabit(hp.getName()));
     }
@@ -164,11 +162,13 @@ public class HabitTrackerGUI implements ActionListener {
         int answer = JOptionPane.showConfirmDialog(frame, "Do you want to save your habits?", "Save",
                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, save);
         if (answer == JOptionPane.NO_OPTION) {
+            printLog(EventLog.getInstance());
             System.exit(0);
 
         } else if (answer == JOptionPane.YES_OPTION) {
             addHabitsToHabitList(); 
             saveHabits();
+            printLog(EventLog.getInstance());
             System.exit(0);
         }
 
@@ -210,6 +210,12 @@ public class HabitTrackerGUI implements ActionListener {
 
     public JPanel getContent() {
         return content;
+    }
+
+    public void printLog(EventLog el) {
+        for (Event next: el) {
+            System.out.println(next.toString());
+        }
     }
 
 

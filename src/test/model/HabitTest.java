@@ -71,4 +71,10 @@ public class HabitTest {
         h1.markHabitAsIncomplete();
         assertFalse(h1.getHabitStatus()); 
     }
+
+    @Test
+    void testSetName() {
+        h1.setName("test");
+        assertEquals("test", h1.getHabitName());
+    }
 }
