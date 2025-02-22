@@ -10,8 +10,6 @@ This application will help users build and maintain healthy habits. Some key fea
 
 This app will be used by individuals who struggle to stay consistent or need motivation to complete their daily goals. The app can help students, athletes, or any other goal-oriented individual stay accountable and maintain good habits. 
 
-This project interests me because I often find it difficult to stay disciplined and consistent with my goals. I see this project as an opportunity to develop a solution for myself and others facing similar challenges. 
-
 ## User Stories
 - As a user, I want to be able to add a custom habit to my tracker
 - As a user, I want to be able to be able to view the habits added to my tracker
