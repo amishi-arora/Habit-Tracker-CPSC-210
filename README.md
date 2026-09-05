@@ -7,13 +7,12 @@ This application will help users build and maintain healthy habits. Some key fea
 - **Progress tracking**: users check off their habits daily if they complete them. 
      - Users can also view the number of consecutive days they have successfully maintained their habit. 
 
-
-This app will be used by individuals who struggle to stay consistent or need motivation to complete their daily goals. The app can help students, athletes, or any other goal-oriented individual stay accountable and maintain good habits. 
-Developed using object-oreinted programming and test-driven development. 
+Built for students, athletes, or anyone who wants a simple way to stay accountable to their goals.
+Developed using object-oriented programming and test-driven development. 
 
 ## User Stories
 - As a user, I want to be able to add a custom habit to my tracker
-- As a user, I want to be able to be able to view the habits added to my tracker
+- As a user, I want to be able to view the habits added to my tracker
 - As a user, I want to be able to check off my habits daily if I complete them
 - As a user, I want to be able to uncheck completed habits
 - As a user, I want to be able to view the number of days I have completed my habit
