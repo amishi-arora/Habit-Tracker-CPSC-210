@@ -9,6 +9,7 @@ This application will help users build and maintain healthy habits. Some key fea
 
 
 This app will be used by individuals who struggle to stay consistent or need motivation to complete their daily goals. The app can help students, athletes, or any other goal-oriented individual stay accountable and maintain good habits. 
+Developed using object-oreinted programming and test-driven development. 
 
 ## User Stories
 - As a user, I want to be able to add a custom habit to my tracker
@@ -19,3 +20,10 @@ This app will be used by individuals who struggle to stay consistent or need mot
 - As a user, I want to be able to delete habits from my tracker
 - As a user, when I quit the application, I want to be reminded to save my habit tracker to file and have the option to do so or not
 - As a user, when I run the application, I want to be given the option to load my habit tracker from file
+
+
+## Tech Stack
+- Java
+- JavaFX
+- JUnit
+- JSON
